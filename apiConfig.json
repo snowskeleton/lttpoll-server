@@ -1,0 +1,136 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "poll",
+    "description" : "all things for polling",
+    "version" : "2022-05-04 19:07:02UTC"
+  },
+  "servers" : [ {
+    "url" : "https://6x0en74zod.execute-api.us-east-2.amazonaws.com/{basePath}",
+    "variables" : {
+      "basePath" : {
+        "default" : ""
+      }
+    }
+  } ],
+  "paths" : {
+    "/poll/{pollID}" : {
+      "get" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for GET /poll/{pollID}"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "2.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:047149081783:function:getPoll/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "parameters" : [ {
+        "name" : "pollID",
+        "in" : "path",
+        "description" : "Generated path parameter for pollID",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/votes/{ids}" : {
+      "get" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for GET /votes/{ids}"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "2.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:047149081783:function:getVotes/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "parameters" : [ {
+        "name" : "ids",
+        "in" : "path",
+        "description" : "Generated path parameter for ids",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/{proxy+}" : {
+      "options" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for OPTIONS /{proxy+}"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "proxy+",
+        "in" : "path",
+        "description" : "Generated path parameter for proxy+",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/option/{optionID}" : {
+      "patch" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for PATCH /option/{optionID}"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "2.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:047149081783:function:voteForPoll/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "parameters" : [ {
+        "name" : "optionID",
+        "in" : "path",
+        "description" : "Generated path parameter for optionID",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/poll" : {
+      "put" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for PUT /poll"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "2.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:047149081783:function:createPoll/invocations",
+          "connectionType" : "INTERNET"
+        }
+      }
+    }
+  },
+  "x-amazon-apigateway-cors" : {
+    "allowMethods" : [ "*" ],
+    "allowHeaders" : [ "*" ],
+    "exposeHeaders" : [ "*" ],
+    "maxAge" : 0,
+    "allowCredentials" : false,
+    "allowOrigins" : [ "*" ]
+  },
+  "x-amazon-apigateway-importexport-version" : "1.0"
+}
